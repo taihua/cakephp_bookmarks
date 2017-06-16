@@ -96,7 +96,8 @@ class BookmarksTable extends Table
     public function findTagged(Query $query, array $options)
     {
         $bookmarks = $this->find()
-            ->select(['id', 'url', 'title', 'description']);
+            ->select(['id', 'url', 'title', 'description'])
+            ->where(['Bookmarks.user_id' => $options['user_id']]);
 
         if (empty($options['tags'])) {
             $bookmarks
